@@ -169,7 +169,7 @@ Resources:
      Subscription: 
        - Endpoint: "mangla_akshay@lilly.com"
          Protocol: "email"
-     TopicName: "newsns-topic"
+     TopicName: "mynewsns-topic"
      
   mysnspolicy:
    Type: AWS::SNS::TopicPolicy
