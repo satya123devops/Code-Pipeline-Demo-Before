@@ -228,8 +228,8 @@ Resources:
         EDATProduct: CI/CD Pipeline v2.0
         EDATProductVersion: !FindInMap [ TemplateProperties, Metadata, Version ]
         SystemOwner: !Ref SystemOwner
-        SystemCustodian: !Ref Custodian
-        PrimaryItContact: !Ref PrimaryITContact
+        SystemCustodian: !Ref SystemCustodian
+        PrimaryItContact: !Ref PrimaryItContact
         CostCenter: !Ref CostCenter
         Environment: 'Dev'
         DataClassification: !Ref DataClassification
