@@ -144,26 +144,26 @@ Resources:
         Hipaa: !Ref Hipaa
         
   MySNSTopic: 
-   Type: AWS::SNS::Topic
-   Properties: 
-     Subscription: 
+    Type: AWS::SNS::Topic
+    Properties: 
+      Subscription: 
        - Endpoint: "mangla_akshay@lilly.com"
          Protocol: "email"
-     TopicName: "mysns-topic"
+      TopicName: "mysns-topic"
   mysnspolicy:
-   Type: AWS::SNS::TopicPolicy
-   Properties:
-    PolicyDocument:
-      Id: MyTopicPolicy
-      Version: '2012-10-17'
-      Statement:
-      - Sid: CodeNotification_publish
-        Effect: Allow
-        Principal:
-          Service: 
+    Type: AWS::SNS::TopicPolicy
+    Properties:
+      PolicyDocument:
+       Id: MyTopicPolicy
+       Version: '2012-10-17'
+       Statement:
+       - Sid: CodeNotification_publish
+         Effect: Allow
+         Principal:
+           Service: 
             - codestar-notifications.amazonaws.com
-        Action: sns:Publish
-        Resource: !Ref MySNSTopic
+         Action: sns:Publish
+         Resource: !Ref MySNSTopic
   MyEventNotification:
     Type: AWS::CodeStarNotifications::NotificationRule
     Properties:
