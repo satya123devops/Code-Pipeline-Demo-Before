@@ -22,7 +22,7 @@ phases:
       - cd $CODEBUILD_SRC_DIR
       - cfn-lint --version
       # https://github.com/aws-cloudformation/cfn-python-lint/issues/1265#issuecomment-568525313
-      - cfn-lint --ignore-checks W3011 --append-rules $CODEBUILD_SRC_DIR_LintRules --template ${TEMPLATE_PATH}
+#      - cfn-lint --ignore-checks W3011 --append-rules $CODEBUILD_SRC_DIR_LintRules --template ${TEMPLATE_PATH}
 
       - echo "Copying Cirrus Authenticators template from S3"
       - aws s3 cp s3://lly-templates/cirrus/cloudformation/cirr-aws-authenticators/latest.yaml codebuild-api-authenticators/authenticators.yaml
