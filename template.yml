@@ -163,13 +163,13 @@ Resources:
         DataClassification: !Ref DataClassification
         Hipaa: !Ref Hipaa
         
-  ServiceLinkedRole:
+  MyServiceLinkedRole:
     Type: Custom::LillyServiceLinkedRole
     Properties:
       ServiceToken: !ImportValue RVM-LambdaARN
       ServiceName: codestar-notifications
       Tags:
-        Environment: !Ref Environment
+        Environment: Dev
         DataClassification: !Ref DataClassification
         
   MySNSTopic: 
