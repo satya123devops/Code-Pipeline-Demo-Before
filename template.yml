@@ -142,14 +142,6 @@ Resources:
         Level1BusinessArea: !Ref Level1BusinessArea
         DataClassification: !Ref DataClassification
         Hipaa: !Ref Hipaa
-        
-  MySNSTopic: 
-    Type: AWS::SNS::Topic
-    Properties: 
-      Subscription: 
-       - Endpoint: "mangla_akshay@lilly.com"
-         Protocol: "email"
-      TopicName: "mysns-topic"
 
 Outputs:
   CloudFrontUrl:
