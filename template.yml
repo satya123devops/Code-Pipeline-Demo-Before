@@ -211,11 +211,11 @@ Resources:
     Topics:
     - !Ref MySNSTopic
     
-  MyEventNotification:
-   DependsOn: ServiceLinkedRole
-   Type: AWS::CodeStarNotifications::NotificationRule
+  PipelineNotificationsRule:
+    DependsOn: ServiceLinkedRole
+    Type: AWS::CodeStarNotifications::NotificationRule
    Properties:
-      Name: 'My Notification Rule'
+      Name: 'MyNotificationRule'
       DetailType: FULL
       Resource: 'arn:aws:codepipeline:us-east-1:073395114856:sample'
       EventTypeIds: 
