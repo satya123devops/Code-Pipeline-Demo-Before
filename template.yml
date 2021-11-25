@@ -214,7 +214,7 @@ Resources:
   PipelineNotificationsRule:
     DependsOn: ServiceLinkedRole
     Type: AWS::CodeStarNotifications::NotificationRule
-   Properties:
+    Properties:
       Name: 'MyNotificationRule'
       DetailType: FULL
       Resource: 'arn:aws:codepipeline:us-east-1:073395114856:sample'
