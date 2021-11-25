@@ -65,10 +65,6 @@ Parameters:
       - "Yes"
       - "No"
       - "TBD"
-  TopicName:
-    Type: String
-    Description:  Topic Name
-    Default: newsns-topic
 
 Resources:
   WebsiteCloudFront:
@@ -153,7 +149,7 @@ MySNSTopic:
      Subscription: 
        - Endpoint: "mangla_akshay@lilly.com"
          Protocol: "email"
-     TopicName: !Ref TopicName 
+     TopicName: mysns-topic
 mysnspolicy:
  Type: AWS::SNS::TopicPolicy
  Properties:
