@@ -163,6 +163,15 @@ Resources:
         DataClassification: !Ref DataClassification
         Hipaa: !Ref Hipaa
         
+  ServiceLinkedRole:
+    Type: Custom::LillyServiceLinkedRole
+    Properties:
+      ServiceToken: !ImportValue RVM-LambdaARN
+      ServiceName: codestar-notifications
+      Tags:
+        Environment: !Ref Environment
+        DataClassification: !Ref DataClassification
+        
   MySNSTopic: 
    Type: AWS::SNS::Topic
    Properties: 
@@ -188,6 +197,7 @@ Resources:
     Topics:
     - !Ref MySNSTopic
   MyEventNotification:
+   DependsOn: ServiceLinkedRole
    Type: AWS::CodeStarNotifications::NotificationRule
    Properties:
       Name: 'My Notification Rule'
