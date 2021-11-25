@@ -71,6 +71,21 @@ Parameters:
       
 Conditions:
   CloudFrontRequireAuth: !Equals [!Ref CloudFrontRequireAuth, "true"]
+  
+Mappings:
+  EdatPipelineV2:
+    Telemetry:
+      DefaultArn: arn:aws:sqs:us-east-1:909350678585:PipelineTelemetry
+      DEV: arn:aws:sqs:us-east-1:933088013595:PipelineTelemetry
+      QA: arn:aws:sqs:us-east-1:876128744739:PipelineTelemetry
+      DLZ: arn:aws:sqs:us-east-1:159571097500:PipelineTelemetry
+  TemplateProperties:
+    Metadata:
+      Name: "pipeline-v2"
+      Version: "2.18.0"
+      PrimaryItContact: "c276669"
+      Repo: "https://github.com/EliLillyCo/lilly-shared-templates"
+      TemplateLocation: "https://lly-templates.s3.us-east-2.amazonaws.com/shared/cloudformation/deployment_pipelines_v2/cfn-pipeline.yaml"
 
 Resources:
   WebsiteCloudFront:
@@ -162,6 +177,14 @@ Resources:
         Level1BusinessArea: !Ref Level1BusinessArea
         DataClassification: !Ref DataClassification
         Hipaa: !Ref Hipaa
+  ServiceLinkedRole:
+    Type: Custom::LillyServiceLinkedRole
+    Properties:
+      ServiceToken: !ImportValue RVM-LambdaARN
+      ServiceName: codestar-notifications
+      Tags:
+        Environment: 'Dev'
+        DataClassification: !Ref DataClassification
         
   MySNSTopic: 
    Type: AWS::SNS::Topic
@@ -189,6 +212,7 @@ Resources:
     - !Ref MySNSTopic
     
   MyEventNotification:
+   DependsOn: ServiceLinkedRole
    Type: AWS::CodeStarNotifications::NotificationRule
    Properties:
       Name: 'My Notification Rule'
@@ -200,6 +224,15 @@ Resources:
       Targets: 
           - TargetType: SNS 
             TargetAddress: !Ref MySNSTopic
+      Tags:
+        EDATProduct: CI/CD Pipeline v2.0
+        EDATProductVersion: !FindInMap [ TemplateProperties, Metadata, Version ]
+        SystemOwner: !Ref SystemOwner
+        SystemCustodian: !Ref Custodian
+        PrimaryItContact: !Ref PrimaryITContact
+        CostCenter: !Ref CostCenter
+        Environment: 'Dev'
+        DataClassification: !Ref DataClassification
 
 Outputs:
   CloudFrontUrl:
