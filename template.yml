@@ -65,6 +65,9 @@ Parameters:
       - "Yes"
       - "No"
       - "TBD"
+      
+Conditions:
+  CloudFrontRequireAuth: !Equals [!Ref CloudFrontRequireAuth, "true"]
 
 Resources:
   WebsiteCloudFront:
@@ -134,6 +137,26 @@ Resources:
       BucketConfiguration:
         EmptyBucketOnDelete: !Ref EmptyWebBucketOnDelete
       Tags:
+        CostCenter: !Ref CostCenter
+        CostCenterApprover: !Ref CostCenterApprover
+        SystemOwner: !Ref SystemOwner
+        SystemCustodian: !Ref SystemCustodian
+        PrimaryItContact: !Ref PrimaryItContact
+        Level1BusinessArea: !Ref Level1BusinessArea
+        DataClassification: !Ref DataClassification
+        Hipaa: !Ref Hipaa
+        
+  CirrusAuthenticators:
+    Condition: CloudFrontRequireAuth
+    Type: AWS::Serverless::Application
+    Properties:
+      Location: codebuild-api-authenticators/authenticators.yaml
+      Parameters:
+        LogLevel: WARN
+        ApiAuthExpectedAudience: ""
+        ApiAuthExpectedIssuer: ""
+        EdgeAuthCloudFrontDistributionId: !Ref CloudfrontDistributionID
+        PermissionsBoundary: "TRUE"
         CostCenter: !Ref CostCenter
         CostCenterApprover: !Ref CostCenterApprover
         SystemOwner: !Ref SystemOwner
