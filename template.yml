@@ -24,7 +24,7 @@ Parameters:
       Add a Lambda@Edge authorizer to the CloudFront distribution for authenticated access. 
       If this is set to true, you must create your stack in us-east-1 (N. Virginia).
     Type: String
-    Default: "true"
+    Default: "false"
     AllowedValues:
       - "true"
       - "false"
