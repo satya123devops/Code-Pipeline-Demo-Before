@@ -177,62 +177,6 @@ Resources:
         Level1BusinessArea: !Ref Level1BusinessArea
         DataClassification: !Ref DataClassification
         Hipaa: !Ref Hipaa
-  ServiceLinkedRole:
-    Type: Custom::LillyServiceLinkedRole
-    Properties:
-      ServiceToken: !ImportValue RVM-LambdaARN
-      ServiceName: codestar-notifications
-      Tags:
-        Environment: 'Dev'
-        DataClassification: !Ref DataClassification
-        
-  MySNSTopic: 
-   Type: AWS::SNS::Topic
-   Properties: 
-     Subscription: 
-       - Endpoint: "mangla_akshay@lilly.com"
-         Protocol: "email"
-     TopicName: "mynewsnstopic-topic"
-     
-  mysnspolicy:
-   Type: AWS::SNS::TopicPolicy
-   Properties:
-    PolicyDocument:
-      Id: MyTopicPolicy
-      Version: '2012-10-17'
-      Statement:
-      - Sid: CodeNotification_publish
-        Effect: Allow
-        Principal:
-          Service: 
-            - codestar-notifications.amazonaws.com
-        Action: sns:Publish
-        Resource: !Ref MySNSTopic
-    Topics:
-    - !Ref MySNSTopic
-    
-  PipelineNotificationsRule:
-    DependsOn: ServiceLinkedRole
-    Type: AWS::CodeStarNotifications::NotificationRule
-    Properties:
-      Name: 'MyNotificationRule'
-      DetailType: FULL
-      Resource: 'arn:aws:codepipeline:us-east-1:073395114856:sample'
-      EventTypeIds: 
-          - codepipeline-pipeline-pipeline-execution-failed
-          - codepipeline-pipeline-pipeline-execution-succeeded
-      Targets: 
-          - TargetType: SNS 
-            TargetAddress: !Ref MySNSTopic
-      Tags:
-        EDATProduct: CI/CD Pipeline v2.0
-        EDATProductVersion: !FindInMap [ TemplateProperties, Metadata, Version ]
-        SystemOwner: !Ref SystemOwner
-        SystemCustodian: !Ref SystemCustodian
-        PrimaryItContact: !Ref PrimaryItContact
-        CostCenter: !Ref CostCenter
-        Environment: 'Dev'
-        DataClassification: !Ref DataClassification
 
 Outputs:
   CloudFrontUrl:
