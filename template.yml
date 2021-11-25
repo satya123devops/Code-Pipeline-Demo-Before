@@ -150,32 +150,7 @@ Resources:
        - Endpoint: "mangla_akshay@lilly.com"
          Protocol: "email"
       TopicName: "mysns-topic"
-  mysnspolicy:
-    Type: AWS::SNS::TopicPolicy
-    Properties:
-      PolicyDocument:
-       Id: MyTopicPolicy
-       Version: '2012-10-17'
-       Statement:
-       - Sid: CodeNotification_publish
-         Effect: Allow
-         Principal:
-           Service: 
-            - codestar-notifications.amazonaws.com
-         Action: sns:Publish
-         Resource: !Ref MySNSTopic
-  MyEventNotification:
-    Type: AWS::CodeStarNotifications::NotificationRule
-    Properties:
-      Name: 'My Notification Rule'
-      DetailType: FULL
-      Resource: 'arn:aws:codepipeline:us-east-1:073395114856:Second'
-      EventTypeIds:
-          - codepipeline-pipeline-pipeline-execution-failed
-          - codepipeline-pipeline-pipeline-execution-succeeded
-      Targets: 
-          - TargetType: SNS
-            TargetAddress: !Ref MySNSTopic
+
 Outputs:
   CloudFrontUrl:
     Value: !Sub
