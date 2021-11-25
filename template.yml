@@ -24,7 +24,7 @@ Parameters:
       Add a Lambda@Edge authorizer to the CloudFront distribution for authenticated access. 
       If this is set to true, you must create your stack in us-east-1 (N. Virginia).
     Type: String
-    Default: "false"
+    Default: "true"
     AllowedValues:
       - "true"
       - "false"
@@ -84,12 +84,6 @@ Resources:
             QueryString: false
           ViewerProtocolPolicy: redirect-to-https
           TargetOriginId: S3WebsiteOrigin
-          LambdaFunctionAssociations:
-            - !If
-              - CloudFrontRequireAuth
-              - EventType: viewer-request
-                LambdaFunctionARN: !GetAtt CirrusAuthenticators.Outputs.EdgeAuthFunctionVersion
-              - !Ref AWS::NoValue
         DefaultRootObject: index.html
         Enabled: true
         Origins:
