@@ -24,7 +24,7 @@ Parameters:
       Add a Lambda@Edge authorizer to the CloudFront distribution for authenticated access. 
       If this is set to true, you must create your stack in us-east-1 (N. Virginia).
     Type: String
-    Default: "true"
+    Default: "false"
     AllowedValues:
       - "true"
       - "false"
@@ -51,7 +51,7 @@ Parameters:
     Default: "YOUR_LEVEL1_BUSINESS_AREA"
   DataClassification:
     Type: String
-    Default: "DATA_CLASSIFICATION_(Green/Yellow/Orange/Red)"
+    Default: "Yellow"
     AllowedValues:
       - "Green"
       - "Yellow"
@@ -60,7 +60,7 @@ Parameters:
       - "TBD"
   Hipaa:
     Type: String
-    Default: "HIPPA_(Yes/No)"
+    Default: "Yes"
     AllowedValues:
       - "Yes"
       - "No"
