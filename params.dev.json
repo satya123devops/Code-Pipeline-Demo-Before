@@ -3,7 +3,7 @@
     "DeployEnvironment": "dev",
     "CloudFrontRequireAuth": "true",
     "EmptyWebBucketOnDelete": "true",
-    "AppName": "mdit-first-bucket",
+    "AppName": "mdit-mynew-bucket",
     "CostCenter": "YOUR_COST_CENTER",
     "CostCenterApprover": "YOUR_COST_CENTER_APPROVER",
     "SystemOwner": "YOUR_SYSTEM_OWNER",
