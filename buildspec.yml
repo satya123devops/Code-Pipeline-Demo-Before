@@ -42,3 +42,4 @@ artifacts:
     - ${TEMPLATE_PATH}
     - ${PARAMETER_FILE_NAME}
   discard-paths: no
+  
