@@ -4,7 +4,7 @@
     "CloudFrontRequireAuth": "true",
     "EmptyWebBucketOnDelete": "true",
     "AppName": "mdit-mynew-bucket",
-    "CostCenter": "YOUR_COST_CENTER",
+    "CostCenter": "C500",
     "CostCenterApprover": "YOUR_COST_CENTER_APPROVER",
     "SystemOwner": "YOUR_SYSTEM_OWNER",
     "SystemCustodian": "YOUR_SYSTEM_CUSTODIAN",
