@@ -5,7 +5,7 @@
     "EmptyWebBucketOnDelete": "true",
     "AppName": "mdit-mynew-bucket",
     "CostCenter": "C800",
-    "CostCenterApprover": "YOUR_COST_CENTER_APPROVER",
+    "CostCenterApprover": "c112",
     "SystemOwner": "YOUR_SYSTEM_OWNER",
     "SystemCustodian": "YOUR_SYSTEM_CUSTODIAN",
     "PrimaryItContact": "YOUR_PRIMARY_IT_CONTACT",
