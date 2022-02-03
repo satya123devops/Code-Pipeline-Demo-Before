@@ -6,7 +6,7 @@ phases:
       nodejs: 12
     commands:
       - echo "Starting install - $(date)"
-
+      - echo " $(date)"
       
 
       - echo "Installing Node dependencies"
