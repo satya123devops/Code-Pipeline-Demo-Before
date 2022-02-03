@@ -1,7 +1,7 @@
 {
   "Parameters": {
     "DeployEnvironment": "dev",
-    "CloudFrontRequireAuth": "false",
+    "CloudFrontRequireAuth": "true",
     "EmptyWebBucketOnDelete": "true",
     "AppName": "mdit-mynew-bucket",
     "CostCenter": "C800",
