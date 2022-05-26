@@ -10,6 +10,7 @@
     "SystemCustodian": "YOUR_SYSTEM_CUSTODIAN",
     "PrimaryItContact": "YOUR_PRIMARY_IT_CONTACT",
     "Level1BusinessArea": "YOUR_LEVEL1_BUSINESS_AREA",
+    "CloudfrontDistributionID": "E3N6JGP7XBGZ2F",
     "DataClassification": "Green",
     "Hipaa": "Yes"
   },
