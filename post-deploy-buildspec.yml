@@ -32,7 +32,7 @@ phases:
       - echo "Testing Node source code"
       - npm test
       - echo "REACT_APP_CONTENTFUL_SPACE_ID=${CONTENTFUL_SPACE}\nREACT_APP_CONTENTFUL_ACCESS_TOKEN=${CONTENTFUL_ACCESS_TOKEN}\nREACT_APP_CONTENTFUL_ENVIRONMENT=${CONTENTFUL_ENVIRONMENT}\nREACT_APP_FEEDBACK_EMAIL=${FEEDBACK_EMAIL}\nREACT_APP_API_ENDPOINT=${API_ENDPOINT}" > .env
-
+      - cat .env
       - echo "Completed pre_build - $(date)"
   build:
     commands:
