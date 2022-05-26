@@ -2,7 +2,9 @@ version: 0.2
 
 env:
   variables:
-    CLOUD_FRONT_IDS: "export CLOUD_FRONT_ID=$(aws cloudformation describe-stacks --stack-name ${STACK_NAME} --query "Stacks[*].Outputs[?OutputKey=='CloudFrontId'].OutputValue" --output text)"
+    CLOUD_FRONT_IDS: "CLOUD_FRONT_ID=$(aws cloudformation describe-stacks --stack-name ${STACK_NAME} --query "Stacks[*].Outputs[?OutputKey=='CloudFrontId'].OutputValue" --output text)"
+  exported-variables:
+    - CLOUD_FRONT_IDS
   parameter-store:
     CONTENTFUL_ACCESS_TOKEN: "/${CLOUD_FRONT_IDS}/CONTENTFUL_ACCESS_TOKEN"
     CONTENTFUL_ENVIRONMENT: "/${CLOUD_FRONT_IDS}/CONTENTFUL_ENVIRONMENT"
