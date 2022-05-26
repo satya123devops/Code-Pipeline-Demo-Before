@@ -1,7 +1,7 @@
 version: 0.2
 
 phases:
-  common_build:
+  pre_build:
     commands:
       - export CLOUD_FRONT_IDS=$(aws cloudformation describe-stacks --stack-name ${STACK_NAME} --query "Stacks[*].Outputs[?OutputKey=='CloudFrontId'].OutputValue" --output text)
       - echo ${CLOUD_FRONT_IDS}
