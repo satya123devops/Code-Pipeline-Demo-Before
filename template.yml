@@ -67,7 +67,7 @@ Parameters:
       - "TBD"
   CloudfrontDistributionID:
     Type: String
-    Default: "Cloudfront Distribution ID"
+    Default: "E3N6JGP7XBGZ2F"
       
 Conditions:
   CloudFrontRequireAuth: !Equals [!Ref CloudFrontRequireAuth, "true"]
