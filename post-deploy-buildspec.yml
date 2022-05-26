@@ -1,5 +1,13 @@
 version: 0.2
 
+env:
+  parameter-store:
+    CONTENTFUL_ACCESS_TOKEN: "/E2EACI4G16GXU5/CONTENTFUL_ACCESS_TOKEN"
+    CONTENTFUL_ENVIRONMENT: "/E2EACI4G16GXU5/CONTENTFUL_ENVIRONMENT"
+    CONTENTFUL_SPACE: "/E2EACI4G16GXU5/CONTENTFUL_SPACE"
+    FEEDBACK_EMAIL: "/E2EACI4G16GXU5/FEEDBACK_EMAIL"
+    API_ENDPOINT: "/E2EACI4G16GXU5/API_ENDPOINT"
+
 phases:
   install:
     runtime-versions:
@@ -23,6 +31,7 @@ phases:
 
       - echo "Testing Node source code"
       - npm test
+      - echo "REACT_APP_CONTENTFUL_SPACE_ID=${CONTENTFUL_SPACE}\nREACT_APP_CONTENTFUL_ACCESS_TOKEN=${CONTENTFUL_ACCESS_TOKEN}\nREACT_APP_CONTENTFUL_ENVIRONMENT=${CONTENTFUL_ENVIRONMENT}\nREACT_APP_FEEDBACK_EMAIL=${FEEDBACK_EMAIL}\nREACT_APP_API_ENDPOINT=${API_ENDPOINT}" > .env
 
       - echo "Completed pre_build - $(date)"
   build:
@@ -44,5 +53,5 @@ phases:
       - export CLOUD_FRONT_ID=$(aws cloudformation describe-stacks --stack-name ${STACK_NAME} --query "Stacks[*].Outputs[?OutputKey=='CloudFrontId'].OutputValue" --output text)
       - while read file; do file_list="$file_list ${file##*$bucket_path}"; done < ${list_of_synced_files}
       - aws cloudfront create-invalidation --distribution-id ${CLOUD_FRONT_ID} --paths ${file_list}
-
+      - echo ${CLOUD_FRONT_ID}
       - echo "Completed post_build - $(date)"  
