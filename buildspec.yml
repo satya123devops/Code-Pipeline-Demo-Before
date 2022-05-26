@@ -46,3 +46,6 @@ artifacts:
     - ${PARAMETER_FILE_NAME}
   discard-paths: no
   
+env:
+  exported-variables:
+    - CLOUD_FRONT_IDD
