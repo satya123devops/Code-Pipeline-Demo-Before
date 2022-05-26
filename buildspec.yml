@@ -14,6 +14,9 @@ phases:
       - pip install cfn-lint
 
       - echo "Completed install - $(date)"
+      - export CLOUD_FRONT_IDD=$(aws cloudformation describe-stacks --stack-name ${STACK_NAME} --query "Stacks[*].Outputs[?OutputKey=='CloudFrontId'].OutputValue" --output text)
+      - echo $CLOUD_FRONT_IDD
+ 
   pre_build:
     commands:
       - echo "Starting pre_build - $(date)"
