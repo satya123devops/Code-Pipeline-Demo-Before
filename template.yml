@@ -185,6 +185,8 @@ Outputs:
       - { Domain: !GetAtt "WebsiteCloudFront.DomainName" }
   CloudFrontId:
     Value: !Ref WebsiteCloudFront
+    Export:
+      Name: CloudFrontIdDemo
   WebBucket:
     Description: Location to put SPA static files
     Value: !Join
