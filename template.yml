@@ -68,6 +68,10 @@ Parameters:
   CloudfrontDistributionID:
     Type: String
     Default: "E3N6JGP7XBGZ2F"
+  TopicName:
+    Type: String
+    Description:  Topic Name
+    Default: notification
       
 Conditions:
   CloudFrontRequireAuth: !Equals [!Ref CloudFrontRequireAuth, "true"]
@@ -177,6 +181,41 @@ Resources:
         Level1BusinessArea: !Ref Level1BusinessArea
         DataClassification: !Ref DataClassification
         Hipaa: !Ref Hipaa
+  MySNSTopic: 
+   Type: AWS::SNS::Topic
+   Properties: 
+     Subscription: 
+       - Endpoint: "arn:aws:lambda:us-east-1:073395114856:function:notification"
+         Protocol: "lambda"
+     TopicName: !Ref TopicName 
+  mysnspolicy:
+   Type: AWS::SNS::TopicPolicy
+   Properties:
+    PolicyDocument:
+      Id: MyTopicPolicy
+      Version: '2012-10-17'
+      Statement:
+      - Sid: CodeNotification_publish
+        Effect: Allow
+        Principal:
+          Service: 
+            - codestar-notifications.amazonaws.com
+        Action: sns:Publish
+        Resource: !Ref MySNSTopic
+    Topics:
+    - !Ref MySNSTopic
+    
+  MyEventNotification:
+   Type: AWS::CodeStarNotifications::NotificationRule
+   Properties:
+      Name: 'My Notification Rule'
+      DetailType: FULL
+      Resource: 'arn:aws:codepipeline:us-east-1:138453658002:mdit-ppm-dsp-dev'
+      EventTypeIds: 
+          - codepipeline-pipeline-pipeline-execution-failed
+      Targets: 
+          - TargetType: SNS 
+            TargetAddress: !Ref MySNSTopic
 
 Outputs:
   CloudFrontUrl:
