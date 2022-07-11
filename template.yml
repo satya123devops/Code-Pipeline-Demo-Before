@@ -46,7 +46,7 @@ Parameters:
   PrimaryItContact:
     Type: String
     Default: "YOUR_PRIMARY_IT_CONTACT"
-  Level1BusinessArea:
+ Level1BusinessArea:
     Type: String
     Default: "YOUR_LEVEL1_BUSINESS_AREA"
   DataClassification:
