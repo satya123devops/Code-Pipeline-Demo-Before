@@ -208,9 +208,9 @@ Resources:
   MyEventNotification:
    Type: AWS::CodeStarNotifications::NotificationRule
    Properties:
-      Name: 'My Notification Rule'
+      Name: 'CodePipeline Notification Rule'
       DetailType: FULL
-      Resource: 'arn:aws:codepipeline:us-east-1:138453658002:mdit-ppm-dsp-dev'
+      Resource: 'arn:aws:codepipeline:us-east-1:073395114856:new-stack'
       EventTypeIds: 
           - codepipeline-pipeline-pipeline-execution-failed
       Targets: 
