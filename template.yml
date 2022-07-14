@@ -188,11 +188,9 @@ Resources:
        - Endpoint: "arn:aws:lambda:us-east-1:073395114856:function:notification"
          Protocol: "lambda"
      TopicName: !Ref TopicName 
-     Role: !Ref AlertingRole
   mysnspolicy:
    Type: AWS::SNS::TopicPolicy
    Properties:
-    Role: !Ref AlertingRole
     PolicyDocument:
       Id: MyTopicPolicy
       Version: '2012-10-17'
