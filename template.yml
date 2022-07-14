@@ -188,9 +188,11 @@ Resources:
        - Endpoint: "arn:aws:lambda:us-east-1:073395114856:function:notification"
          Protocol: "lambda"
      TopicName: !Ref TopicName 
+     Role: !Ref AlertingRole
   mysnspolicy:
    Type: AWS::SNS::TopicPolicy
    Properties:
+    Role: !Ref AlertingRole
     PolicyDocument:
       Id: MyTopicPolicy
       Version: '2012-10-17'
@@ -209,7 +211,6 @@ Resources:
    Type: AWS::CodeStarNotifications::NotificationRule
    Properties:
       Name: 'CodePipeline Notification Rule'
-      Role: !Ref AlertingRole
       DetailType: FULL
       Resource: 'arn:aws:codepipeline:us-east-1:073395114856:new-stack'
       EventTypeIds: 
@@ -221,7 +222,7 @@ Resources:
   AlertingRole:
    Type: AWS::IAM::Role
    Properties:
-      RoleName:  Alert_Role
+      RoleName: Alert_Role
       Description: "Alerting Role"
       PermissionsBoundary: !Sub 'arn:aws:iam::${AWS::AccountId}:policy/LZ-IAM-Boundary'
       AssumeRolePolicyDocument:
@@ -244,6 +245,8 @@ Resources:
                   - "codepipeline:*"
                   - "codebuild:*"
                   - "codestar-notifications:*"
+                  - "sns:*"
+                  - "cloudformation:*"
                 Effect: Allow
                 Resource:
                   - "*"   
