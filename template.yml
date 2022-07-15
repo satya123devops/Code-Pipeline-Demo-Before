@@ -71,7 +71,7 @@ Parameters:
   TopicName:
     Type: String
     Description:  Topic Name
-    Default: notification
+    Default: EmailNotification
       
 Conditions:
   CloudFrontRequireAuth: !Equals [!Ref CloudFrontRequireAuth, "true"]
@@ -185,7 +185,7 @@ Resources:
    Type: AWS::SNS::Topic
    Properties: 
      Subscription: 
-       - Endpoint: "arn:aws:lambda:us-east-1:073395114856:function:notification"
+       - Endpoint: "arn:aws:lambda:us-east-1:073395114856:function:EmailNotification"
          Protocol: "lambda"
      TopicName: !Ref TopicName 
   mysnspolicy:
@@ -220,7 +220,7 @@ Resources:
   AlertingRole:
    Type: AWS::IAM::Role
    Properties:
-      RoleName: Alert_Role
+      RoleName: Test_Alert_Role
       Description: "Alerting Role"
       PermissionsBoundary: !Sub 'arn:aws:iam::${AWS::AccountId}:policy/LZ-IAM-Boundary'
       AssumeRolePolicyDocument:
