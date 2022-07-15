@@ -235,16 +235,19 @@ Resources:
             Action: 
               - sts:AssumeRole
       Policies:
-        - PolicyName: alert
+        - PolicyName: alert_testing
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
               - Action:
                   - "codepipeline:*"
                   - "codebuild:*"
-                  - "codestar-notifications:*"
                   - "sns:*"
                   - "cloudformation:*"
+                  - "codestar-notifications:ListNotificationRules"
+                  - "codestar-notifications:ListTargets"
+                  - "codestar-notifications:ListTagsforResource"
+                  - "codestar-notifications:ListEventTypes" 
                 Effect: Allow
                 Resource:
                   - "*"   
