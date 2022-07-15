@@ -210,7 +210,7 @@ Resources:
    Properties:
       Name: 'CodePipeline-Notification-Rule'
       DetailType: FULL
-      Resource: 'arn:aws:codepipeline:us-east-1:073395114856:new-stack'
+      Resource: 'arn:aws:codepipeline:us-east-1:073395114856:Code-Pipeline-Demo'
       EventTypeIds: 
           - codepipeline-pipeline-pipeline-execution-failed
       Targets: 
