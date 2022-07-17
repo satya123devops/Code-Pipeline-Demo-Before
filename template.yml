@@ -71,7 +71,7 @@ Parameters:
   TopicName:
     Type: String
     Description:  Topic Name
-    Default: EmailNotification
+    Default: LambdaNotification
       
 Conditions:
   CloudFrontRequireAuth: !Equals [!Ref CloudFrontRequireAuth, "true"]
