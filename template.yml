@@ -68,10 +68,6 @@ Parameters:
   CloudfrontDistributionID:
     Type: String
     Default: "E3N6JGP7XBGZ2F"
-  TopicName:
-    Type: String
-    Description:  Topic Name
-    Default: LambdaNotification
       
 Conditions:
   CloudFrontRequireAuth: !Equals [!Ref CloudFrontRequireAuth, "true"]
