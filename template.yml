@@ -209,6 +209,7 @@ Resources:
    Type: AWS::CodeStarNotifications::NotificationRule
    Properties:
       Name: 'CodePipelineDemo-Notification-Rule'
+      Role: !Ref AlertingRole
       DetailType: FULL
       Resource: 'arn:aws:codepipeline:us-east-1:073395114856:Code-Pipeline-Demo'
       EventTypeIds: 
