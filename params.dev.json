@@ -12,17 +12,17 @@
     "Level1BusinessArea": "YOUR_LEVEL1_BUSINESS_AREA",
     "CloudfrontDistributionID": "E3N6JGP7XBGZ2F",
     "DataClassification": "Green",
-    "Hipaa": "Yes"
+    "Hipaa": "No"
   },
   "Tags": {
-    "CostCenter": "YOUR_COST_CENTER",
-    "CostCenterApprover": "YOUR_COST_CENTER_APPROVER",
+    "CostCenter": "100ARAS",
+    "CostCenterApprover": "supancik_kent_a@lilly.com",
     "SystemOwner": "YOUR_SYSTEM_OWNER",
     "SystemCustodian": "YOUR_SYSTEM_CUSTODIAN",
     "PrimaryItContact": "YOUR_PRIMARY_IT_CONTACT",
     "Level1BusinessArea": "YOUR_LEVEL1_BUSINESS_AREA",
     "DataClassification": "Green",
-    "Hipaa": "Yes"
+    "Hipaa": "No"
   },
   "StackPolicy": {}
 }

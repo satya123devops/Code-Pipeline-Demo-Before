@@ -169,7 +169,7 @@ Resources:
       Location: codebuild-api-authenticators/authenticators.yaml
       Parameters:
         LogLevel: WARN
-        ApiAuthExpectedAudience: "aud_tutorial,aud_sample"
+        ApiAuthExpectedAudience: "aud_tutorial"
         ApiAuthExpectedIssuer: "https://gateway-v2-api.lillyapi.com"
         EdgeAuthCloudFrontDistributionId: !Ref CloudfrontDistributionID
         PermissionsBoundary: "TRUE"
@@ -185,7 +185,7 @@ Resources:
    Type: AWS::SNS::Topic
    Properties: 
      Subscription: 
-       - Endpoint: "arn:aws:lambda:us-east-1:073395114856:function:EmailNotification"
+       - Endpoint: "arn:aws:lambda:us-east-1:073395114856:function:LambdaNotification"
          Protocol: "lambda"
      TopicName: !Ref TopicName 
   mysnspolicy:
