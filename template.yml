@@ -169,8 +169,8 @@ Resources:
       Location: codebuild-api-authenticators/authenticators.yaml
       Parameters:
         LogLevel: WARN
-        ApiAuthExpectedAudience: ""
-        ApiAuthExpectedIssuer: ""
+        ApiAuthExpectedAudience: "aud_tutorial,aud_sample"
+        ApiAuthExpectedIssuer: "https://gateway-v2-api.lillyapi.com"
         EdgeAuthCloudFrontDistributionId: !Ref CloudfrontDistributionID
         PermissionsBoundary: "TRUE"
         CostCenter: !Ref CostCenter
@@ -244,10 +244,7 @@ Resources:
                   - "codebuild:*"
                   - "sns:*"
                   - "cloudformation:*"
-                  - "codestar-notifications:ListNotificationRules"
-                  - "codestar-notifications:ListTargets"
-                  - "codestar-notifications:ListTagsforResource"
-                  - "codestar-notifications:ListEventTypes" 
+                  - "codestar-notifications:*"
                 Effect: Allow
                 Resource:
                   - "*"   
